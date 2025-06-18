@@ -54,7 +54,7 @@ Once the dataset is generated, run the following script to apply the VQ-VAE mode
 ```python
 python experiment_1.py
 ```
-
+```bibtex
 ##📄 Reference
 If you use this code or experiment in your research, please cite:
 @misc{Li2025,
