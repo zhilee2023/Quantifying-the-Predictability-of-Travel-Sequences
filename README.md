@@ -1,4 +1,4 @@
-# Quantifying the Predictability of Travel Sequences Using a Vector-Quantized Variational Autoencoder
+
 
 This repository provides the code associated with the paper *Quantifying the Predictability of Travel Sequences Using a Vector-Quantized Variational Autoencoder* (VQ-VAE). The code primarily focuses on the first experiment of the paper, which investigates the generation of two-dimensional Gaussian-Markov sequences and the application of VQ-VAE to model the predictability of these sequences.
 
