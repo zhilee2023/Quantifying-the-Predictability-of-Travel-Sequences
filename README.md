@@ -63,5 +63,4 @@ If you use this code or experiment in your research, please cite:
   title        = {Quantifying the Predictability of Travel Sequences Using a Vector-Quantized Variational Autoencoder},
   note         = {Preprint, under review},
   year         = {2025},
-  howpublished = {\url{https://github.com/zhilee2023/EV-drive-charge-data-gen}}
 }
