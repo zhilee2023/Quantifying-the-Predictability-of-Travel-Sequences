@@ -1,0 +1,50 @@
+Bottleneck @ file:///croot/bottleneck_1731058641041/work
+Brotli @ file:///croot/brotli-split_1736182456865/work
+contourpy @ file:///croot/contourpy_1732540045555/work
+cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+filelock==3.13.1
+fonttools @ file:///croot/fonttools_1737039080035/work
+fsspec==2024.6.1
+Jinja2==3.1.4
+kiwisolver @ file:///croot/kiwisolver_1737039087198/work
+MarkupSafe==3.0.2
+matplotlib==3.10.0
+mkl-service==2.4.0
+mkl_fft @ file:///io/mkl313/mkl_fft_1730824109137/work
+mkl_random @ file:///io/mkl313/mkl_random_1730823916628/work
+mpmath==1.3.0
+networkx==3.3
+numexpr @ file:///io/perseverance-python-buildout/croot/numexpr_1731701292781/work
+numpy @ file:///croot/numpy_and_numpy_base_1742570410886/work/dist/numpy-2.2.4-cp313-cp313-linux_x86_64.whl#sha256=43a25b5608f18d082ab87d93bfe1d3f81291081034af07ffcb713a904a363b75
+nvidia-cublas-cu11==11.11.3.6
+nvidia-cuda-cupti-cu11==11.8.87
+nvidia-cuda-nvrtc-cu11==11.8.89
+nvidia-cuda-runtime-cu11==11.8.89
+nvidia-cudnn-cu11==9.1.0.70
+nvidia-cufft-cu11==10.9.0.58
+nvidia-curand-cu11==10.3.0.86
+nvidia-cusolver-cu11==11.4.1.48
+nvidia-cusparse-cu11==11.7.5.86
+nvidia-nccl-cu11==2.21.5
+nvidia-nvtx-cu11==11.8.86
+packaging @ file:///croot/packaging_1734472117206/work
+pandas @ file:///croot/pandas_1732735089971/work/dist/pandas-2.2.3-cp313-cp313-linux_x86_64.whl#sha256=248baa16b8f7b48e3a9c0e641fba9a72bce9c95c0dddf7c9a7547016b61fe3fb
+pillow @ file:///croot/pillow_1738010226202/work
+pyparsing @ file:///io/buildout/croot/pyparsing_1735862672222/work
+PyQt6==6.7.1
+PyQt6_sip @ file:///croot/pyqt-split_1740498191142/work/pyqt_sip
+python-dateutil @ file:///work/perseverance-python-buildout/croot/python-dateutil_1728385355105/work
+pytz @ file:///work/perseverance-python-buildout/croot/pytz_1728386814080/work
+scipy @ file:///croot/scipy_1743153247252/work/dist/scipy-1.15.2-cp313-cp313-linux_x86_64.whl#sha256=0fcdea24ba589efe1517ae1147ed7b83d8b1fcc30dbb90fe961c583a7d975654
+setuptools==72.1.0
+sip @ file:///croot/sip_1738856193618/work
+six @ file:///tmp/build/80754af9/six_1644875935023/work
+sympy==1.13.1
+torch==2.6.0+cu118
+torchaudio==2.6.0+cu118
+torchvision==0.21.0+cu118
+tornado @ file:///io/buildout/croot/tornado_1735842129908/work
+triton==3.2.0
+typing_extensions==4.12.2
+tzdata @ file:///croot/python-tzdata_1690578112552/work
+wheel==0.45.1
