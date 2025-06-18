@@ -22,9 +22,9 @@ All dependencies are listed in `requirements.txt`.
 
 To install all required Python packages:
 
-```bash
+```python
 pip install -r requirements.txt
-
+```
 
 ## 🧪 Experiment 1: Gaussian-Markov Sequence Generation and Predictability Analysis
 
@@ -42,15 +42,18 @@ The synthetic dataset simulates a discrete-time Gaussian-Markov process with the
 
 To generate a new dataset:
 
-```bash
+```python
 python data_gen.py
+```
+
 
 ### 📈 Running the VQ-VAE and Plotting Rate–Distortion
 
 Once the dataset is generated, run the following script to apply the VQ-VAE model and produce a rate-distortion curve:
 
-```bash
-python experiment1.py
+```python
+python experiment_1.py
+```
 
 ##📄 Reference
 If you use this code or experiment in your research, please cite:
