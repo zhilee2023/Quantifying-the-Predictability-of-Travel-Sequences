@@ -2,69 +2,70 @@
 
 Official code companion to *Quantifying the Predictability of Travel Sequences Using a Vector-Quantized Variational Autoencoder*. This repository contains **two independent parts**:
 
-| Part | Folder | What it does |
-|------|--------|----------------|
-| **Experiment 1 — Gaussian–Markov** | [`gaussian/`](gaussian/) | Synthetic 2D Gaussian–Markov sequences, theoretical rate–distortion curves, VQ-VAE training and predictability / rate–distortion sweeps. |
-| **San Francisco (Cabspotting) GPS** | [`sf_2/`](sf_2/) | Real taxi-style trajectories: resampling, direct / Markov / VQ-VAE **CTW** predictability, bundled HPC-style outputs under `sf_2/sfexp_result/`, plotting scripts. SF-only (no Geolife / Beijing). |
+| Part | Folder | Entry scripts | How parameters are set |
+|------|--------|---------------|-------------------------|
+| **Experiment 1 — Gaussian–Markov** | [`gaussian/`](gaussian/) | `data_gen.py`, `experiment_1.py` | **Constants at top of each file** (no CLI). Full tables → [`gaussian/README.md`](gaussian/README.md). |
+| **San Francisco (Cabspotting) GPS** | [`sf_2/`](sf_2/) | `src/run_sf_experiment.py`, `scripts/plot_sf_figures.py` | **Command-line arguments** (`--help`). Full tables → [`sf_2/README.md`](sf_2/README.md). |
 
-Install and run **each** part from its own directory (different dependency sets). They do not share a single virtual environment requirement file.
+Install and run **each** part from its own directory (different `requirements.txt`).
 
 ---
 
-## Quick start
+## How to start (summary)
 
-### A. Gaussian–Markov experiment (`gaussian/`)
+### A. Gaussian–Markov (`gaussian/`)
 
 ```bash
 cd gaussian
 pip install -r requirements.txt
-# Optional: regenerate data (long); repo already includes gaussian/data/*.npy
+# Optional: regenerate data (slow) — tune constants in data_gen.py first
 # python data_gen.py
 python experiment_1.py
 ```
 
-Details: [`gaussian/README.md`](gaussian/README.md).
+- **Working directory:** `gaussian/`.  
+- **Device:** CUDA if available (see `experiment_1.py`).  
+- **Optional env:** `MACHINE_ID` tags output folders (default `local`).  
+- **Outputs:** `rate_distortion_results_<MACHINE_ID>_<timestamp>/` (git-ignored).  
+- **Parameter reference:** [`gaussian/README.md`](gaussian/README.md) (data generation + VQ sweep constants).
 
-- **Data:** `gaussian/data/` ships precomputed `X_train`, `X_val`, coefficients, and theoretical `D_vals` / `R_vals` so `experiment_1.py` runs without regenerating data.
-- **Outputs:** `rate_distortion_results_<MACHINE_ID>_<timestamp>/` (ignored by Git). Override tag with env var `MACHINE_ID` (default `local`).
-
-### B. San Francisco experiment (`sf_2/`)
+### B. San Francisco (`sf_2/`)
 
 ```bash
 cd sf_2
 pip install -r requirements.txt
-# Place Cabspotting-style CSV at sf_2/data/sf_dataset.csv (see sf_2/data/README.md)
+# Put Cabspotting CSV at data/sf_dataset.csv
 python src/run_sf_experiment.py --help
-python scripts/plot_sf_figures.py --help
+python src/run_sf_experiment.py --tolerance-km 2.5 --sample-intervals 5 --interpolation-methods linear --codebook-sizes 256 --num-epochs 2 --max-users 50 --device cpu --data-dir data/sf_dataset.csv --output-dir sfexp_result --run-name smoke
+python scripts/plot_sf_figures.py --workspace . --run-dir sfexp_result --mode all
 ```
 
-Details: [`sf_2/README.md`](sf_2/README.md).
+- **Working directory:** `sf_2/`.  
+- **Parameter reference:** [`sf_2/README.md`](sf_2/README.md) (all CLI flags + HPC sharding + plotting).
 
 ---
 
-## Dependencies (summary)
+## Dependencies
 
-- **Gaussian:** `numpy`, `scipy`, `pandas`, `matplotlib`, `torch` — see [`gaussian/requirements.txt`](gaussian/requirements.txt).
-- **SF:** PyTorch stack plus **geospatial** libraries (`geopandas`, `pyproj`, `shapely`, …) — see [`sf_2/requirements.txt`](sf_2/requirements.txt).
+- **Gaussian:** [`gaussian/requirements.txt`](gaussian/requirements.txt) — `numpy`, `scipy`, `pandas`, `matplotlib`, `torch`.  
+- **SF:** [`sf_2/requirements.txt`](sf_2/requirements.txt) — PyTorch + geospatial stack (`geopandas`, `pyproj`, `shapely`, …).
 
 ---
 
-## Git Large File Storage (LFS)
+## Git LFS (SF bundle)
 
-The SF bundle stores model weights and pickles under `sf_2/sfexp_result/` using **Git LFS** for `*.pt` and `*.pkl` (see [`.gitattributes`](.gitattributes)). After cloning:
+Model weights and pickles under `sf_2/sfexp_result/` use **Git LFS** for `*.pt` / `*.pkl` ([`.gitattributes`](.gitattributes)). After clone:
 
 ```bash
 git lfs install
-git lfs pull   # if pointers were not expanded
+git lfs pull   # if files show as pointers
 ```
 
-GitHub caps a **single LFS object at 2 GB**. Very large artifacts (e.g. some `latent_code_occurrences.csv` exports) must stay local or be shared separately; they are listed in [`.gitignore`](.gitignore). See [`sf_2/sfexp_result/README.md`](sf_2/sfexp_result/README.md).
+GitHub limits a **single LFS object to 2 GB**; very large CSVs may be excluded — see [`.gitignore`](.gitignore) and [`sf_2/sfexp_result/README.md`](sf_2/sfexp_result/README.md).
 
 ---
 
 ## Citation
-
-If you use this code, please cite:
 
 ```bibtex
 @misc{Li2025,
@@ -77,7 +78,12 @@ If you use this code, please cite:
 
 ---
 
-## 中文概览
+## 中文说明
 
-- **高斯–马尔可夫实验**（`gaussian/`）：合成二维轨迹与率失真分析；已附带 `data/` 中数据可直接 `python experiment_1.py`；详见 [`gaussian/README.md`](gaussian/README.md)。
-- **旧金山真实 GPS 实验**（`sf_2/`）：需自备 `sf_2/data/sf_dataset.csv`；权重等大体积极使用 Git LFS；详见 [`sf_2/README.md`](sf_2/README.md)。
+| 部分 | 启动 | 参数在哪里改 |
+|------|------|----------------|
+| **Gaussian** | `cd gaussian` → `pip install -r requirements.txt` → `python experiment_1.py` | 见 [`gaussian/README.md`](gaussian/README.md)：修改 `data_gen.py` / `experiment_1.py` **文件顶部常量**（无命令行参数）。 |
+| **旧金山 SF** | `cd sf_2` → 放置 `data/sf_dataset.csv` → `python src/run_sf_experiment.py ...` | 见 [`sf_2/README.md`](sf_2/README.md)：全部用 **命令行参数**；`python src/run_sf_experiment.py --help` 查看完整列表。 |
+| **作图** | `python scripts/plot_sf_figures.py --workspace . --run-dir sfexp_result` | 同上，`--help` 与子 README 中的表格。 |
+
+更细的启动步骤、默认值与 HPC 任务编号说明以两个子目录下的 **README** 为准。

@@ -2,26 +2,31 @@
 
 This folder is **self-contained**: synthetic 2D Gaussian–Markov trajectories, theoretical rate–distortion baselines (`data_gen.py`), and VQ-VAE training with a rate–distortion / predictability sweep (`experiment_1.py`).
 
-## Layout
+**There is no CLI for these two scripts.** Hyperparameters live at the **top of each `.py` file** as constants; edit the file, save, then run.
 
-| File | Role |
-|------|------|
-| `data_gen.py` | Simulates the AR process, writes `data/X_train.npy`, `data/X_val.npy`, `coeff.npy`, `D_vals.npy`, `R_vals.npy`, and a baseline RD figure `data/distortion_rate_curve.png`. |
-| `experiment_1.py` | Loads the arrays under `data/`, trains `EC_VQVAE` over a grid of distortion targets, logs metrics, saves plots under `rate_distortion_results_<MACHINE_ID>_<timestamp>/`. |
-| `model.py`, `sequence_gen.py`, `ctw_estimate.py` | Model, batches, and entropy / RD helpers used by the scripts above. |
+---
 
-Pre-generated tensors and the baseline curve are **included** under `data/` so you can run `experiment_1.py` immediately. Re-running `data_gen.py` overwrites those files (long run; uses ~1M training samples by default).
-
-## Environment
+## 1. Environment and how to start
 
 ```bash
 cd gaussian
 pip install -r requirements.txt
 ```
 
-Use a recent **PyTorch** build (CPU or CUDA). `experiment_1.py` picks `cuda` when available.
+| Step | Command | Notes |
+|------|---------|--------|
+| (Optional) regenerate data | `python data_gen.py` | Long run; overwrites `data/*.npy`. Skip if you use the repo’s bundled `data/`. |
+| Train + RD sweep | `python experiment_1.py` | Uses `data/` and writes under `rate_distortion_results_<MACHINE_ID>_<timestamp>/`. |
 
-Optional: set `MACHINE_ID` to tag output folders (default is `local`):
+**Working directory:** always run from **`gaussian/`** so `data/` and imports resolve.
+
+**PyTorch device:** `experiment_1.py` uses CUDA if available, else CPU (see `DEVICE = ...` in the script).
+
+**Environment variable (optional):**
+
+| Variable | Effect |
+|----------|--------|
+| `MACHINE_ID` | Prefix for output folder name. Default: `local`. |
 
 ```bash
 # Linux / macOS
@@ -31,27 +36,84 @@ export MACHINE_ID=hpc01
 $env:MACHINE_ID = "hpc01"
 ```
 
-## Run order
+---
 
-### 1) (Optional) Regenerate synthetic data and theoretical RD curve
+## 2. Parameters — `data_gen.py`
 
-```bash
-cd gaussian
-python data_gen.py
-```
+All settings are **constants at the top of the file** (lines ~11–32). Change them in an editor, then run `python data_gen.py`.
 
-This can take a while and requires enough RAM for the configured sequence lengths.
+| Constant | Default (typical) | Meaning |
+|----------|-------------------|---------|
+| `SEQUENCE_LEN` | `1_000_000` | Training samples (after split logic). |
+| `DIMENSION` | `2` | State dimension (2D). |
+| `AR_ORDER` | `5` | Autoregressive order. |
+| `SIGMA_Z` | `1.0` | White-noise std. |
+| `THETA_VALUES` | `np.logspace(-3, 2, 50)` | Grid for theoretical RD curve. |
+| `N_FREQ` | `100_000` | Frequency resolution for theoretical RD. |
+| `TOTAL_LENGTH` | derived | Total simulated length; includes burn-in for AR. |
+| `OUTPUT_DIR` | `"data"` | Folder for `X_train.npy`, `X_val.npy`, `coeff.npy`, `D_vals.npy`, `R_vals.npy`, `distortion_rate_curve.png`. |
 
-### 2) Train VQ-VAE and sweep distortions
+**Outputs (under `gaussian/data/`):**
 
-```bash
-cd gaussian
-python experiment_1.py
-```
+- `X_train.npy`, `X_val.npy` — sequences for VQ-VAE  
+- `coeff.npy` — AR coefficients  
+- `D_vals.npy`, `R_vals.npy` — theoretical distortion / rate pairs for the baseline curve  
+- `distortion_rate_curve.png` — plot of the baseline RD curve  
 
-Outputs appear under `gaussian/rate_distortion_results_<MACHINE_ID>_<timestamp>/` (git-ignored).
+---
 
-## Citation
+## 3. Parameters — `experiment_1.py`
+
+All settings are **constants at the top of the file** (lines ~21–47). Change them, then run `python experiment_1.py`.
+
+### Training / optimization
+
+| Constant | Default | Meaning |
+|----------|---------|---------|
+| `T` | `150` | Time steps per sliding window (sequence length fed to the model). |
+| `BATCH_SIZE` | `512` | DataLoader batch size. |
+| `NUM_EPOCHS` | `20` | Training epochs per distortion target in the sweep. |
+| `PRETRAIN_EPOCHS` | `1` | Warm-up epochs before the main objective. |
+
+### Model (`EC_VQVAE`)
+
+| Constant | Default | Meaning |
+|----------|---------|---------|
+| `BETA` | `1.0` | Logged to metadata; see loss terms in `model_train`. |
+| `SIGMA` | `1.0` | Passed into `model_train` (reconstruction / noise scale). |
+| `KERNEL_SIZE` | `13` | Temporal conv kernel size. |
+| `HIDDEN_CHANNELS` | `32` | Conv trunk width. |
+| `EMBEDDING_DIM` | `6` | VQ embedding dimension. |
+| `NUM_CONV_LAYERS` | `3` | Number of conv layers. |
+| `CODEBOOK_SIZE` | `128` | Codebook size \(K\). |
+
+### Distortion sweep
+
+| Constant | Default | Meaning |
+|----------|---------|---------|
+| `DISTORTIONS` | `np.arange(1.75, 0.0, -0.1)` | Distortion **targets** swept in order (one model train per value). |
+
+### Paths
+
+| Constant | Default | Meaning |
+|----------|---------|---------|
+| `DATA_DIR` | `"data"` | Loads `X_train.npy`, `X_val.npy`, `R_vals.npy`, `D_vals.npy` from here. |
+| `OUTPUT_BASE` | `"rate_distortion_results"` | Output root name. |
+| Output folder | `rate_distortion_results_<MACHINE_ID>_<timestamp>/` | Contains `rate_distortion_results.txt`, plots, and logs. |
+
+---
+
+## 4. Layout (reference)
+
+| File | Role |
+|------|------|
+| `data_gen.py` | Simulates AR process; writes `data/*.npy` and `distortion_rate_curve.png`. |
+| `experiment_1.py` | Loads `data/`, trains VQ-VAE per distortion, logs metrics and figures. |
+| `model.py`, `sequence_gen.py`, `ctw_estimate.py` | Model, batches, entropy / RD helpers. |
+
+---
+
+## 5. Citation
 
 See the repository root `README.md` for BibTeX.
 
@@ -59,6 +121,7 @@ See the repository root `README.md` for BibTeX.
 
 ## 中文说明
 
-- **依赖**：在 `gaussian` 目录下执行 `pip install -r requirements.txt`。
-- **数据**：默认已附带 `data/` 中的 `.npy` 与基准图，可直接运行 `python experiment_1.py`。若需重新模拟数据，再运行 `python data_gen.py`（耗时较长）。
-- **输出**：实验结果写入 `rate_distortion_results_*` 目录（已被 `.gitignore` 忽略）。
+- **启动**：在 `gaussian` 目录下先 `pip install -r requirements.txt`，再运行 `python experiment_1.py`（或先 `python data_gen.py` 重新生成数据）。  
+- **参数**：`data_gen.py` 与 `experiment_1.py` **没有命令行参数**，均在各自文件**顶部常量**中修改（见上文表格）。  
+- **输出**：`rate_distortion_results_*` 目录（已被 `.gitignore` 忽略）。  
+- **环境变量**：`MACHINE_ID` 用于区分输出目录前缀，默认 `local`。
