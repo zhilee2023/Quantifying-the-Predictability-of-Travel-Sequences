@@ -34,7 +34,7 @@ from sf_preprocess import (
     symbolic_ctw_metrics,
 )
 
-# sf_2 package root (parent of src/)
+# sf_cabspotting package root (parent of src/)
 WORKSPACE_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SF_DATA_PATH = WORKSPACE_ROOT / "data" / "sf_dataset.csv"
 DEFAULT_OUTPUT_DIR = WORKSPACE_ROOT / "sfexp_result"
@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:
         "--data-dir",
         type=Path,
         default=DEFAULT_SF_DATA_PATH,
-        help="Cabspotting-style CSV (see sf_2/data/README.md).",
+        help="Cabspotting-style CSV (see sf_cabspotting/data/README.md).",
     )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--sample-intervals", nargs="+", type=int, default=[5, 15, 30])

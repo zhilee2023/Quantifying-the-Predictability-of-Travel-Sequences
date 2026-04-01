@@ -170,7 +170,7 @@ def plot_geo_density(*, workspace: Path, data_csv: Path, scenario_dir: Path, che
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="SF experiment figures (single entry point).")
     here = Path(__file__).resolve().parents[1]
-    p.add_argument("--workspace", type=Path, default=here, help="sf_2 folder root (contains src/, scripts/).")
+    p.add_argument("--workspace", type=Path, default=here, help="sf_cabspotting folder root (contains src/, scripts/).")
     p.add_argument("--run-dir", type=Path, default=None, help="Folder with **/user_level_results.csv (default: workspace/sfexp_result).")
     p.add_argument(
         "--mode",

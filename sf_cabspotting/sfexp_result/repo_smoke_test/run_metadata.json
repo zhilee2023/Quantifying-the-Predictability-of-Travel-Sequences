@@ -7,7 +7,7 @@
   ],
   "dataset": "sf",
   "dataset_label": "Cabspotting / San Francisco",
-  "data_dir": "C:\\Users\\zhile\\Desktop\\rl_c\\Quantifying-the-Predictability-of-Travel-Sequences\\sf_2\\data\\sf_dataset.csv",
+  "data_dir": "C:\\Users\\zhile\\Desktop\\rl_c\\Quantifying-the-Predictability-of-Travel-Sequences\\sf_cabspotting\\data\\sf_dataset.csv",
   "sample_intervals": [
     5
   ],

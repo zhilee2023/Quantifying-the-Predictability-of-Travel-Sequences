@@ -1,4 +1,4 @@
-# SF trajectory experiment (sf_2)
+# San Francisco Cabspotting trajectory experiment (sf_cabspotting/)
 torch>=1.11
 numpy>=1.24
 pandas>=2.0
