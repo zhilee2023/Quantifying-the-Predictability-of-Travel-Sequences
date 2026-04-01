@@ -1,0 +1,7 @@
+# Gaussian–Markov / Experiment 1 (CPU or CUDA)
+# Install: pip install -r gaussian/requirements.txt
+numpy>=1.22
+scipy>=1.9
+pandas>=1.5
+matplotlib>=3.7
+torch>=2.0

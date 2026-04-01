@@ -1,6 +1,8 @@
 __pycache__/
 *.pyc
 .venv/
+# Gaussian experiment outputs (Experiment 1)
+gaussian/rate_distortion_results*/
 # Cabspotting CSV is large; obtain locally (see sf_2/data/README.md)
 sf_2/data/sf_dataset.csv
 # Exceeds GitHub LFS 2 GB/file limit; keep locally or host separately (Zenodo / release zip)
