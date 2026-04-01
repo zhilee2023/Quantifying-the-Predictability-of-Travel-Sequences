@@ -1,0 +1,4 @@
+sample_interval_min,interpolation_method,codebook_size,raw_code,num_occurrences,dominant_mode,top_modes,mean_speed_kmh,mean_step_km,mean_radius_of_gyration_km
+5,nearest,256,234,48768,taxi,taxi:48768,12.007552146911621,1.0006294250488281,1.8436748066127515
+5,nearest,512,210,48768,taxi,taxi:48768,12.007552146911621,1.0006294250488281,1.8436748066127515
+5,nearest,1024,882,48768,taxi,taxi:48768,12.007552146911621,1.0006294250488281,1.8436748066127515

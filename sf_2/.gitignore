@@ -1,0 +1,8 @@
+# Dataset path (also listed in repo-root .gitignore)
+data/sf_dataset.csv
+!sfexp_result/README.md
+__pycache__/
+*.pyc
+.venv/
+fig_*.pdf
+fig_*.png

@@ -1,0 +1,32 @@
+{
+  "model_class": "EC_VQVAE",
+  "module": "model",
+  "constructor_kwargs": {
+    "in_channels": 2,
+    "hidden_channels": 64,
+    "codebook_size": 512,
+    "embedding_dim": 16,
+    "commitment_cost": 0.25,
+    "time_steps": 32,
+    "num_conv_layers": 3,
+    "kernel_size": 13
+  },
+  "experiment": {
+    "tolerance_km": 2.5,
+    "sample_interval_min": 5,
+    "interpolation_method": "nearest",
+    "coordinate_scale_km": 10.0,
+    "d_target_scaled": 0.0625,
+    "center_km_xy": [
+      551.20751953125,
+      4181.76513671875
+    ],
+    "device_trained": "cuda",
+    "num_epochs": 30,
+    "pretrain_epochs": 1,
+    "batch_size": 64,
+    "window_stride": 4,
+    "lr": 0.0003
+  },
+  "checkpoint_file": "vqvae_tol2p5km_int5min_nearest_K512.pt"
+}

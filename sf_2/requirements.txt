@@ -1,0 +1,8 @@
+# SF trajectory experiment (sf_2)
+torch>=1.11
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+geopandas>=0.14
+pyproj>=3.4
+shapely>=2.0

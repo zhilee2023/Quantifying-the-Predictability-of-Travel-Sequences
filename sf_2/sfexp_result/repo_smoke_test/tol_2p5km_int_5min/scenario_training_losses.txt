@@ -1,0 +1,11 @@
+# VQ-VAE training losses (per epoch). One block per (interval, interpolation, K).
+# tolerance_km=2.5  sample_interval_min=5
+# coordinate_scale_km=10.0  D_target_scaled=0.0625  target_RMSE_km=2.5
+
+================================================================================
+# sample_interval_min=5  interpolation=linear  K=256
+# detail_log: train_interval5_linear_K256.log
+================================================================================
+
+Epoch 1: Recon_RMSE_km=4.068004 target_RMSE_km=2.500000, VQ=7.462796, Pred=5.638904, Ent=5.540332
+Epoch 2: Recon_RMSE_km=4.024824 target_RMSE_km=2.500000, VQ=85.147498, Pred=1.621878, Ent=3.956302

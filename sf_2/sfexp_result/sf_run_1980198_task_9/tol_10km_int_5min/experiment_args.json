@@ -1,0 +1,53 @@
+{
+  "dataset": "sf",
+  "data_dir": "/gpfsnyu/scratch/zl2307/sf_dataset.csv",
+  "output_dir": "/gpfsnyu/scratch/zl2307/sf_results_hpc_retry_nearest",
+  "sample_intervals": [
+    5
+  ],
+  "interpolation_methods": [
+    "nearest"
+  ],
+  "codebook_sizes": [
+    256,
+    512,
+    1024
+  ],
+  "tolerance_kms": [
+    10.0
+  ],
+  "tolerance_km": 10.0,
+  "coordinate_scale_km": 10.0,
+  "time_steps": 16,
+  "window_stride": 2,
+  "batch_size": 64,
+  "eval_batch_size": 256,
+  "num_epochs": 40,
+  "pretrain_epochs": 2,
+  "hidden_channels": 64,
+  "embedding_dim": 16,
+  "num_conv_layers": 3,
+  "kernel_size": 13,
+  "commitment_cost": 0.2,
+  "lr": 0.0002,
+  "sigma": 1.08,
+  "gamma": 0.5,
+  "step_size": 20,
+  "markov_alpha": 1.0,
+  "min_points": 5,
+  "min_vq_length": 16,
+  "include_ineligible_in_aggregation": false,
+  "max_users": null,
+  "max_segments": null,
+  "beijing_only": false,
+  "beijing_min_fraction": 0.7,
+  "beijing_boundary_cache_dir": null,
+  "beijing_boundary_url": null,
+  "projection": "utm",
+  "device": "cuda",
+  "skip_vq": false,
+  "run_name": "sf_retry_nearest_1981902_task_9",
+  "hpc_coarse_task": null,
+  "hpc_fine_task": null,
+  "hpc_scenario_task": 9
+}

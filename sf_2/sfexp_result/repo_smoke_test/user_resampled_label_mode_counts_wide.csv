@@ -1,0 +1,4 @@
+user_id,sample_interval_min,interpolation_method,taxi
+abboip,5,linear,6044
+abcoij,5,linear,3440
+abdrem,5,linear,6020

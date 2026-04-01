@@ -1,0 +1,47 @@
+{
+  "num_rows": 1517674,
+  "num_segments": 38090,
+  "num_users": 533,
+  "modes": [
+    "taxi"
+  ],
+  "dataset": "sf",
+  "dataset_label": "Cabspotting / San Francisco",
+  "data_dir": "/gpfsnyu/scratch/zl2307/sf_dataset.csv",
+  "sample_intervals": [
+    15
+  ],
+  "interpolation_methods": [
+    "linear",
+    "nearest"
+  ],
+  "codebook_sizes": [
+    256,
+    512,
+    1024
+  ],
+  "tolerance_kms": [
+    7.5
+  ],
+  "coordinate_scale_km": 10.0,
+  "projection": "utm",
+  "skip_vq": false,
+  "torch_available": true,
+  "hpc_coarse_task": null,
+  "hpc_fine_task": null,
+  "hpc_scenario_task": 7,
+  "run_name": "sf_run_1980198_task_7",
+  "beijing_only": false,
+  "beijing_min_fraction": 0.7,
+  "beijing_boundary_url": null,
+  "beijing_boundary_cache_dir": null,
+  "beijing_user_ids": null,
+  "beijing_user_count": null,
+  "include_ineligible_in_aggregation": false,
+  "user_label_export_files": [
+    "user_resampled_label_mode_counts.csv",
+    "user_resampled_label_mode_counts_wide.csv",
+    "user_label_mode_fraction_by_user.csv",
+    "user_original_label_intervals.csv"
+  ]
+}

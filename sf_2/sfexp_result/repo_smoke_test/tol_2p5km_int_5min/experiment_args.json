@@ -1,0 +1,46 @@
+{
+  "dataset": "sf",
+  "data_dir": "C:\\Users\\zhile\\Desktop\\rl_c\\Quantifying-the-Predictability-of-Travel-Sequences\\sf_2\\data\\sf_dataset.csv",
+  "output_dir": "C:\\Users\\zhile\\Desktop\\rl_c\\Quantifying-the-Predictability-of-Travel-Sequences\\sf_2\\sfexp_result",
+  "sample_intervals": [
+    5
+  ],
+  "interpolation_methods": [
+    "linear"
+  ],
+  "codebook_sizes": [
+    256
+  ],
+  "tolerance_kms": [
+    2.5
+  ],
+  "tolerance_km": 2.5,
+  "coordinate_scale_km": 10.0,
+  "time_steps": 32,
+  "window_stride": 4,
+  "batch_size": 64,
+  "eval_batch_size": 256,
+  "num_epochs": 1,
+  "pretrain_epochs": 1,
+  "hidden_channels": 64,
+  "embedding_dim": 16,
+  "num_conv_layers": 3,
+  "kernel_size": 13,
+  "commitment_cost": 0.35,
+  "lr": 0.0003,
+  "sigma": 1.08,
+  "gamma": 0.5,
+  "step_size": 15,
+  "markov_alpha": 1.0,
+  "min_points": 5,
+  "min_vq_length": 32,
+  "max_users": 3,
+  "max_segments": null,
+  "projection": "utm",
+  "device": "cpu",
+  "skip_vq": false,
+  "run_name": "repo_smoke_test",
+  "hpc_coarse_task": null,
+  "hpc_fine_task": null,
+  "hpc_scenario_task": null
+}

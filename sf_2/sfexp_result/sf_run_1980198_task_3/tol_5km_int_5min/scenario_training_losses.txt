@@ -1,0 +1,147 @@
+# Geolife VQ-VAE training losses (per epoch). One block per (interval, interpolation, K).
+# tolerance_km=5.0  sample_interval_min=5
+# coordinate_scale_km=10.0  D_target_scaled=0.25  target_RMSE_km=5
+
+================================================================================
+# sample_interval_min=5  interpolation=nearest  K=256
+# detail_log: train_interval5_nearest_K256.log
+================================================================================
+
+Epoch 1: Recon_RMSE_km=2.738145 target_RMSE_km=5.000000, VQ=1.069974, Pred=5.609603, Ent=5.544212
+Epoch 2: Recon_RMSE_km=1.648561 target_RMSE_km=5.000000, VQ=4.927459, Pred=5.611480, Ent=5.540331
+Epoch 3: Recon_RMSE_km=4.687629 target_RMSE_km=5.000000, VQ=5.917271, Pred=1.684857, Ent=2.855744
+Epoch 4: Recon_RMSE_km=4.480849 target_RMSE_km=5.000000, VQ=3.273981, Pred=0.113939, Ent=1.117104
+Epoch 5: Recon_RMSE_km=4.609317 target_RMSE_km=5.000000, VQ=1.760779, Pred=0.021710, Ent=0.848467
+Epoch 6: Recon_RMSE_km=4.590096 target_RMSE_km=5.000000, VQ=2.232605, Pred=0.005563, Ent=0.546001
+Epoch 7: Recon_RMSE_km=4.390177 target_RMSE_km=5.000000, VQ=1.797250, Pred=0.001812, Ent=0.406456
+Epoch 8: Recon_RMSE_km=4.243999 target_RMSE_km=5.000000, VQ=1.513936, Pred=0.000732, Ent=0.307213
+Epoch 9: Recon_RMSE_km=4.220056 target_RMSE_km=5.000000, VQ=1.877810, Pred=0.001719, Ent=0.324482
+Epoch 10: Recon_RMSE_km=4.026235 target_RMSE_km=5.000000, VQ=1.760719, Pred=0.000813, Ent=0.299068
+Epoch 11: Recon_RMSE_km=4.265652 target_RMSE_km=5.000000, VQ=3.625538, Pred=0.026533, Ent=0.416395
+Epoch 12: Recon_RMSE_km=4.380854 target_RMSE_km=5.000000, VQ=2.666438, Pred=0.032663, Ent=0.907013
+Epoch 13: Recon_RMSE_km=4.581178 target_RMSE_km=5.000000, VQ=1.450861, Pred=0.000813, Ent=0.383782
+Epoch 14: Recon_RMSE_km=4.483965 target_RMSE_km=5.000000, VQ=1.403963, Pred=0.000298, Ent=0.234725
+Epoch 15: Recon_RMSE_km=4.305399 target_RMSE_km=5.000000, VQ=1.504587, Pred=0.000335, Ent=0.182123
+Epoch 16: Recon_RMSE_km=4.103525 target_RMSE_km=5.000000, VQ=2.195821, Pred=0.001142, Ent=0.235734
+Epoch 17: Recon_RMSE_km=4.564283 target_RMSE_km=5.000000, VQ=5.001382, Pred=0.050134, Ent=0.807274
+Epoch 18: Recon_RMSE_km=4.464252 target_RMSE_km=5.000000, VQ=2.303226, Pred=0.004565, Ent=0.666399
+Epoch 19: Recon_RMSE_km=4.405517 target_RMSE_km=5.000000, VQ=1.662424, Pred=0.000445, Ent=0.419571
+Epoch 20: Recon_RMSE_km=4.589795 target_RMSE_km=5.000000, VQ=1.471629, Pred=0.000174, Ent=0.146442
+Epoch 21: Recon_RMSE_km=4.544991 target_RMSE_km=5.000000, VQ=1.515990, Pred=0.000112, Ent=0.060120
+Epoch 22: Recon_RMSE_km=4.522633 target_RMSE_km=5.000000, VQ=1.498962, Pred=0.000178, Ent=0.030542
+Epoch 23: Recon_RMSE_km=4.580908 target_RMSE_km=5.000000, VQ=1.293400, Pred=0.000227, Ent=0.012953
+Epoch 24: Recon_RMSE_km=4.275454 target_RMSE_km=5.000000, VQ=1.337431, Pred=0.000027, Ent=0.015598
+Epoch 25: Recon_RMSE_km=4.354394 target_RMSE_km=5.000000, VQ=1.140219, Pred=0.000146, Ent=0.009426
+Epoch 26: Recon_RMSE_km=4.630746 target_RMSE_km=5.000000, VQ=0.979375, Pred=0.000124, Ent=0.006793
+Epoch 27: Recon_RMSE_km=4.526191 target_RMSE_km=5.000000, VQ=0.951131, Pred=0.000014, Ent=0.006258
+Epoch 28: Recon_RMSE_km=4.518710 target_RMSE_km=5.000000, VQ=0.841331, Pred=0.000011, Ent=0.004656
+Epoch 29: Recon_RMSE_km=4.540200 target_RMSE_km=5.000000, VQ=0.755433, Pred=0.000009, Ent=0.003813
+Epoch 30: Recon_RMSE_km=4.553420 target_RMSE_km=5.000000, VQ=0.683730, Pred=0.000008, Ent=0.003208
+Epoch 31: Recon_RMSE_km=4.566433 target_RMSE_km=5.000000, VQ=0.629920, Pred=0.000007, Ent=0.002738
+Epoch 32: Recon_RMSE_km=4.567529 target_RMSE_km=5.000000, VQ=0.582917, Pred=0.000007, Ent=0.002413
+Epoch 33: Recon_RMSE_km=4.389408 target_RMSE_km=5.000000, VQ=0.567446, Pred=0.000006, Ent=0.002512
+Epoch 34: Recon_RMSE_km=4.400603 target_RMSE_km=5.000000, VQ=0.526242, Pred=0.000006, Ent=0.001981
+Epoch 35: Recon_RMSE_km=4.412390 target_RMSE_km=5.000000, VQ=0.489576, Pred=0.000006, Ent=0.001794
+Epoch 36: Recon_RMSE_km=4.421856 target_RMSE_km=5.000000, VQ=0.457659, Pred=0.000005, Ent=0.001628
+Epoch 37: Recon_RMSE_km=4.430301 target_RMSE_km=5.000000, VQ=0.430457, Pred=0.000005, Ent=0.000971
+Epoch 38: Recon_RMSE_km=4.441984 target_RMSE_km=5.000000, VQ=0.405301, Pred=0.000005, Ent=0.001297
+Epoch 39: Recon_RMSE_km=4.450137 target_RMSE_km=5.000000, VQ=0.382979, Pred=0.000005, Ent=0.001206
+Epoch 40: Recon_RMSE_km=4.457336 target_RMSE_km=5.000000, VQ=0.361052, Pred=0.000004, Ent=0.001091
+Epoch 41: Recon_RMSE_km=4.461901 target_RMSE_km=5.000000, VQ=0.341617, Pred=0.000004, Ent=0.000829
+Epoch 42: Recon_RMSE_km=4.466793 target_RMSE_km=5.000000, VQ=0.326602, Pred=0.000004, Ent=0.000892
+
+================================================================================
+# sample_interval_min=5  interpolation=nearest  K=512
+# detail_log: train_interval5_nearest_K512.log
+================================================================================
+
+Epoch 1: Recon_RMSE_km=2.933955 target_RMSE_km=5.000000, VQ=0.572901, Pred=6.315742, Ent=6.237543
+Epoch 2: Recon_RMSE_km=1.662238 target_RMSE_km=5.000000, VQ=1.115463, Pred=6.340184, Ent=6.236250
+Epoch 3: Recon_RMSE_km=4.849875 target_RMSE_km=5.000000, VQ=4.558745, Pred=2.014427, Ent=2.990430
+Epoch 4: Recon_RMSE_km=4.818874 target_RMSE_km=5.000000, VQ=3.066164, Pred=0.206250, Ent=1.743134
+Epoch 5: Recon_RMSE_km=4.824924 target_RMSE_km=5.000000, VQ=2.817867, Pred=0.069813, Ent=1.507280
+Epoch 6: Recon_RMSE_km=4.765740 target_RMSE_km=5.000000, VQ=2.266776, Pred=0.027140, Ent=1.398514
+Epoch 7: Recon_RMSE_km=4.819965 target_RMSE_km=5.000000, VQ=1.555361, Pred=0.014103, Ent=1.315184
+Epoch 8: Recon_RMSE_km=4.741963 target_RMSE_km=5.000000, VQ=1.234739, Pred=0.005724, Ent=1.185388
+Epoch 9: Recon_RMSE_km=4.764892 target_RMSE_km=5.000000, VQ=1.028929, Pred=0.003227, Ent=1.090283
+Epoch 10: Recon_RMSE_km=4.771464 target_RMSE_km=5.000000, VQ=0.968551, Pred=0.002114, Ent=1.008364
+Epoch 11: Recon_RMSE_km=4.675294 target_RMSE_km=5.000000, VQ=1.018930, Pred=0.001493, Ent=0.927765
+Epoch 12: Recon_RMSE_km=4.720049 target_RMSE_km=5.000000, VQ=1.090493, Pred=0.001204, Ent=0.742918
+Epoch 13: Recon_RMSE_km=4.585773 target_RMSE_km=5.000000, VQ=1.396924, Pred=0.001066, Ent=0.563631
+Epoch 14: Recon_RMSE_km=5.092621 target_RMSE_km=5.000000, VQ=2.861050, Pred=0.010987, Ent=0.475921
+Epoch 15: Recon_RMSE_km=4.769744 target_RMSE_km=5.000000, VQ=3.488063, Pred=0.049493, Ent=1.342772
+Epoch 16: Recon_RMSE_km=4.722273 target_RMSE_km=5.000000, VQ=1.247181, Pred=0.009493, Ent=1.212866
+Epoch 17: Recon_RMSE_km=4.676268 target_RMSE_km=5.000000, VQ=0.986519, Pred=0.001992, Ent=1.017343
+Epoch 18: Recon_RMSE_km=4.725213 target_RMSE_km=5.000000, VQ=0.845701, Pred=0.001069, Ent=0.886519
+Epoch 19: Recon_RMSE_km=4.752119 target_RMSE_km=5.000000, VQ=0.746933, Pred=0.000753, Ent=0.762513
+Epoch 20: Recon_RMSE_km=4.732471 target_RMSE_km=5.000000, VQ=0.717900, Pred=0.000648, Ent=0.688808
+Epoch 21: Recon_RMSE_km=4.784331 target_RMSE_km=5.000000, VQ=0.709060, Pred=0.000587, Ent=0.615538
+Epoch 22: Recon_RMSE_km=4.736986 target_RMSE_km=5.000000, VQ=0.824532, Pred=0.000946, Ent=0.559687
+Epoch 23: Recon_RMSE_km=4.736672 target_RMSE_km=5.000000, VQ=0.942468, Pred=0.001506, Ent=0.503614
+Epoch 24: Recon_RMSE_km=4.766142 target_RMSE_km=5.000000, VQ=1.031506, Pred=0.001454, Ent=0.443819
+Epoch 25: Recon_RMSE_km=4.722260 target_RMSE_km=5.000000, VQ=1.218535, Pred=0.001259, Ent=0.399220
+Epoch 26: Recon_RMSE_km=4.697511 target_RMSE_km=5.000000, VQ=1.377604, Pred=0.001480, Ent=0.340497
+Epoch 27: Recon_RMSE_km=4.644001 target_RMSE_km=5.000000, VQ=1.511821, Pred=0.001750, Ent=0.316044
+Epoch 28: Recon_RMSE_km=4.605741 target_RMSE_km=5.000000, VQ=1.909585, Pred=0.001689, Ent=0.341294
+Epoch 29: Recon_RMSE_km=4.598453 target_RMSE_km=5.000000, VQ=2.132632, Pred=0.006027, Ent=0.373893
+Epoch 30: Recon_RMSE_km=4.534113 target_RMSE_km=5.000000, VQ=2.082738, Pred=0.005874, Ent=0.373832
+Epoch 31: Recon_RMSE_km=4.565369 target_RMSE_km=5.000000, VQ=2.331134, Pred=0.001864, Ent=0.307281
+Epoch 32: Recon_RMSE_km=4.610727 target_RMSE_km=5.000000, VQ=3.100655, Pred=0.012430, Ent=0.468383
+Epoch 33: Recon_RMSE_km=4.586449 target_RMSE_km=5.000000, VQ=2.426887, Pred=0.002264, Ent=0.451693
+Epoch 34: Recon_RMSE_km=4.687555 target_RMSE_km=5.000000, VQ=3.436860, Pred=0.007179, Ent=0.507878
+Epoch 35: Recon_RMSE_km=4.745807 target_RMSE_km=5.000000, VQ=2.917545, Pred=0.003057, Ent=0.441364
+Epoch 36: Recon_RMSE_km=4.570995 target_RMSE_km=5.000000, VQ=2.980983, Pred=0.001137, Ent=0.387177
+Epoch 37: Recon_RMSE_km=4.746232 target_RMSE_km=5.000000, VQ=2.191204, Pred=0.000769, Ent=0.166308
+Epoch 38: Recon_RMSE_km=4.722618 target_RMSE_km=5.000000, VQ=2.531382, Pred=0.001515, Ent=0.137807
+Epoch 39: Recon_RMSE_km=4.716022 target_RMSE_km=5.000000, VQ=2.692065, Pred=0.000432, Ent=0.087959
+Epoch 40: Recon_RMSE_km=4.649731 target_RMSE_km=5.000000, VQ=2.193350, Pred=0.000299, Ent=0.055001
+Epoch 41: Recon_RMSE_km=4.729210 target_RMSE_km=5.000000, VQ=1.597532, Pred=0.000146, Ent=0.033039
+Epoch 42: Recon_RMSE_km=4.686578 target_RMSE_km=5.000000, VQ=1.472083, Pred=0.000053, Ent=0.024514
+
+================================================================================
+# sample_interval_min=5  interpolation=nearest  K=1024
+# detail_log: train_interval5_nearest_K1024.log
+================================================================================
+
+Epoch 1: Recon_RMSE_km=2.579847 target_RMSE_km=5.000000, VQ=0.597751, Pred=6.892391, Ent=6.930536
+Epoch 2: Recon_RMSE_km=1.604191 target_RMSE_km=5.000000, VQ=1.287879, Pred=7.009232, Ent=6.929609
+Epoch 3: Recon_RMSE_km=4.808388 target_RMSE_km=5.000000, VQ=4.100366, Pred=2.364287, Ent=4.264213
+Epoch 4: Recon_RMSE_km=4.775827 target_RMSE_km=5.000000, VQ=3.133668, Pred=0.124664, Ent=1.402450
+Epoch 5: Recon_RMSE_km=4.715742 target_RMSE_km=5.000000, VQ=2.782128, Pred=0.057579, Ent=1.143035
+Epoch 6: Recon_RMSE_km=4.673928 target_RMSE_km=5.000000, VQ=2.589461, Pred=0.038723, Ent=1.003180
+Epoch 7: Recon_RMSE_km=4.695375 target_RMSE_km=5.000000, VQ=2.398851, Pred=0.016234, Ent=0.788721
+Epoch 8: Recon_RMSE_km=4.564926 target_RMSE_km=5.000000, VQ=2.390812, Pred=0.009322, Ent=0.627655
+Epoch 9: Recon_RMSE_km=4.679206 target_RMSE_km=5.000000, VQ=2.271220, Pred=0.004260, Ent=0.457153
+Epoch 10: Recon_RMSE_km=4.338601 target_RMSE_km=5.000000, VQ=3.577521, Pred=0.011132, Ent=0.618305
+Epoch 11: Recon_RMSE_km=4.488709 target_RMSE_km=5.000000, VQ=3.414749, Pred=0.005963, Ent=0.473373
+Epoch 12: Recon_RMSE_km=4.228011 target_RMSE_km=5.000000, VQ=3.764819, Pred=0.003464, Ent=0.431414
+Epoch 13: Recon_RMSE_km=4.368874 target_RMSE_km=5.000000, VQ=4.251938, Pred=0.004751, Ent=0.435544
+Epoch 14: Recon_RMSE_km=4.445726 target_RMSE_km=5.000000, VQ=3.430628, Pred=0.001232, Ent=0.300312
+Epoch 15: Recon_RMSE_km=4.301109 target_RMSE_km=5.000000, VQ=4.745544, Pred=0.002273, Ent=0.292356
+Epoch 16: Recon_RMSE_km=4.469062 target_RMSE_km=5.000000, VQ=5.231236, Pred=0.005659, Ent=0.365641
+Epoch 17: Recon_RMSE_km=4.378636 target_RMSE_km=5.000000, VQ=4.337834, Pred=0.001243, Ent=0.280940
+Epoch 18: Recon_RMSE_km=4.219001 target_RMSE_km=5.000000, VQ=4.709413, Pred=0.000415, Ent=0.185408
+Epoch 19: Recon_RMSE_km=4.404676 target_RMSE_km=5.000000, VQ=5.780015, Pred=0.001462, Ent=0.104014
+Epoch 20: Recon_RMSE_km=4.101520 target_RMSE_km=5.000000, VQ=6.248571, Pred=0.000837, Ent=0.060740
+Epoch 21: Recon_RMSE_km=4.833821 target_RMSE_km=5.000000, VQ=14.268212, Pred=0.096688, Ent=0.888437
+Epoch 22: Recon_RMSE_km=4.787792 target_RMSE_km=5.000000, VQ=5.581572, Pred=0.030469, Ent=1.455023
+Epoch 23: Recon_RMSE_km=4.824881 target_RMSE_km=5.000000, VQ=3.712262, Pred=0.020761, Ent=1.479205
+Epoch 24: Recon_RMSE_km=4.814116 target_RMSE_km=5.000000, VQ=3.109512, Pred=0.019769, Ent=1.484924
+Epoch 25: Recon_RMSE_km=4.790784 target_RMSE_km=5.000000, VQ=2.696751, Pred=0.017234, Ent=1.484287
+Epoch 26: Recon_RMSE_km=4.764374 target_RMSE_km=5.000000, VQ=2.390699, Pred=0.016176, Ent=1.475403
+Epoch 27: Recon_RMSE_km=4.755581 target_RMSE_km=5.000000, VQ=2.145392, Pred=0.014280, Ent=1.459881
+Epoch 28: Recon_RMSE_km=4.753854 target_RMSE_km=5.000000, VQ=1.959264, Pred=0.012517, Ent=1.444642
+Epoch 29: Recon_RMSE_km=4.816826 target_RMSE_km=5.000000, VQ=1.788931, Pred=0.010919, Ent=1.425125
+Epoch 30: Recon_RMSE_km=4.836097 target_RMSE_km=5.000000, VQ=1.662054, Pred=0.009801, Ent=1.408107
+Epoch 31: Recon_RMSE_km=4.797970 target_RMSE_km=5.000000, VQ=1.557533, Pred=0.008669, Ent=1.386536
+Epoch 32: Recon_RMSE_km=4.789153 target_RMSE_km=5.000000, VQ=1.467952, Pred=0.008492, Ent=1.355481
+Epoch 33: Recon_RMSE_km=4.806597 target_RMSE_km=5.000000, VQ=1.396918, Pred=0.007614, Ent=1.325425
+Epoch 34: Recon_RMSE_km=4.802602 target_RMSE_km=5.000000, VQ=1.326337, Pred=0.005991, Ent=1.292422
+Epoch 35: Recon_RMSE_km=4.823626 target_RMSE_km=5.000000, VQ=1.265424, Pred=0.005522, Ent=1.254416
+Epoch 36: Recon_RMSE_km=4.759700 target_RMSE_km=5.000000, VQ=1.226905, Pred=0.004507, Ent=1.209084
+Epoch 37: Recon_RMSE_km=4.769152 target_RMSE_km=5.000000, VQ=1.189177, Pred=0.004360, Ent=1.143620
+Epoch 38: Recon_RMSE_km=4.789764 target_RMSE_km=5.000000, VQ=1.165163, Pred=0.003712, Ent=1.052850
+Epoch 39: Recon_RMSE_km=4.833636 target_RMSE_km=5.000000, VQ=1.184973, Pred=0.002260, Ent=0.957519
+Epoch 40: Recon_RMSE_km=4.882536 target_RMSE_km=5.000000, VQ=1.209510, Pred=0.001715, Ent=0.829018
+Epoch 41: Recon_RMSE_km=4.821543 target_RMSE_km=5.000000, VQ=1.285564, Pred=0.000631, Ent=0.688358
+Epoch 42: Recon_RMSE_km=4.846530 target_RMSE_km=5.000000, VQ=1.297866, Pred=0.000260, Ent=0.547227

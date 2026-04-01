@@ -141,7 +141,7 @@ for dist_threshold in DISTORTIONS:
     with open(LOG_PATH, "a") as log_file:
         log_file.write(
             f"  Rate     = {H:.4f}  |  Base Rate = {R_base:.4f}\n"
-            f"  Recon    = {avg_recon:.4f}  |  Distances = {distances}\n"
+            f"  Recon_RMSE = {avg_recon:.4f}  |  Distances = {distances}\n"
             f"  Predict  = {pi:.4f}  |  Base Pred  = {Pi:.4f}\n"
             f"  Max Symbol = {max(q_sequence)}\n\n"
         )

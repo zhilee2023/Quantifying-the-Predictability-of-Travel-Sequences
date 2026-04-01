@@ -1,0 +1,5 @@
+{
+  "tolerance_km": 7.5,
+  "sample_interval_min": 15,
+  "vq_d_target_scaled": 0.5625
+}

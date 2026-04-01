@@ -1,5 +1,6 @@
 import math
-from typing import Tuple, List
+import sys
+from typing import List, Optional, Tuple
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -440,6 +441,7 @@ def model_train(
     gamma: float = 0.2,
     D_target: float = 2.5,
     lr: float = 1e-3,
+    coordinate_scale_km: Optional[float] = None,
 ) -> EC_VQVAE:
     """
     Trains the EC_VQVAE model with optional augmented Lagrangian after pretraining.
@@ -454,8 +456,11 @@ def model_train(
         step_size (int): Step size for LR scheduler.
         sigma (float): Multiplier for rho update.
         gamma (float): Factor for LR scheduler decay.
-        D_target (float): Target reconstruction loss threshold for inequality constraint.
+        D_target (float): Threshold for recon_loss (mean squared Euclidean in **scaled** coords; same units as
+            ``F.mse_loss * C`` aggregate). Geolife passes (grid_cell_km / coordinate_scale_km)**2 for the grid bound.
         lr (float): Initial learning rate.
+        coordinate_scale_km (float, optional): If set, logs report **RMSE in km** (= sqrt(mean squared error in scaled
+            space) * scale), consistent with UTM planar coordinates after dividing by ``coordinate_scale_km``.
 
     Returns:
         EC_VQVAE: The trained model.
@@ -481,7 +486,7 @@ def model_train(
             x_batch = x_batch.float().to(device)  # (B, T, C)
             x_recon, vq_loss, entropy_loss, pred_loss, _ = model(x_batch)
 
-            # Reconstruction loss (MSE scaled by feature dimension)
+            # Reconstruction: mean squared Euclidean distance in scaled (x,y) space (training objective; logs use RMSE)
             recon_loss = F.mse_loss(x_recon, x_batch) * x_batch.size(-1)
 
             # Augmented Lagrangian after pretrain
@@ -528,16 +533,41 @@ def model_train(
         avg_pred = running_pred / batches
         avg_ent = running_entropy / batches
 
-        # Log to console
-        print(
+        # recon_loss is mean squared Euclidean distance in scaled (x,y) space; RMSE = sqrt(...), km = RMSE_scaled * scale
+        avg_recon_rmse_scaled = float(math.sqrt(max(avg_recon, 0.0)))
+        # D_target is MSE in scaled space; distortion budget as RMSE = sqrt(D_target) (km if scale is passed)
+        target_rmse_scaled = float(math.sqrt(max(D_target, 0.0)))
+        if coordinate_scale_km is not None:
+            scale = float(coordinate_scale_km)
+            avg_recon_rmse_km = avg_recon_rmse_scaled * scale
+            target_rmse_km = target_rmse_scaled * scale
+            # With Geolife's D_target = (grid_cell_km/scale)^2, target_RMSE_km equals grid_cell_km (tolerance in km)
+            recon_log = (
+                f"Recon_RMSE_km={avg_recon_rmse_km:.4f} target_RMSE_km={target_rmse_km:.4f}"
+            )
+            recon_file = (
+                f"Recon_RMSE_km={avg_recon_rmse_km:.6f} target_RMSE_km={target_rmse_km:.6f}"
+            )
+        else:
+            recon_log = (
+                f"Recon_RMSE_scaled={avg_recon_rmse_scaled:.4f} target_RMSE_scaled={target_rmse_scaled:.4f}"
+            )
+            recon_file = (
+                f"Recon_RMSE_scaled={avg_recon_rmse_scaled:.6f} target_RMSE_scaled={target_rmse_scaled:.6f}"
+            )
+
+        # Log to console (RMSE vs distortion budget; plot both vs epoch from the log file)
+        _epoch_line = (
             f"Epoch [{epoch + 1}/{num_epochs}] "
-            f"Recon: {avg_recon:.4f} | VQ: {avg_vq:.4f} | Pred: {avg_pred:.4f} | Ent: {avg_ent:.4f}"
+            f"{recon_log} | VQ: {avg_vq:.4f} | Pred: {avg_pred:.4f} | Ent: {avg_ent:.4f}"
         )
+        print(_epoch_line, flush=True)
+        print(_epoch_line, file=sys.stderr, flush=True)
 
         # Append to log file
         with open(output_file, "a") as f:
             f.write(
-                f"Epoch {epoch + 1}: Recon={avg_recon:.6f}, VQ={avg_vq:.6f}, "
+                f"Epoch {epoch + 1}: {recon_file}, VQ={avg_vq:.6f}, "
                 f"Pred={avg_pred:.6f}, Ent={avg_ent:.6f}\n"
             )
 
@@ -569,7 +599,8 @@ def return_zq_list(
 
     Returns:
         reindexed_list (List[int]): Discrete codes reindexed to consecutive ints.
-        avg_recon_loss (float): Average reconstruction loss over all blocks.
+        avg_recon_rmse (float): Root-mean-square reconstruction error in input units (sqrt of mean squared Euclidean
+            distance in scaled coordinates), not MSE.
     """
     model.eval()
     Total_T, C = X.shape
@@ -584,7 +615,7 @@ def return_zq_list(
         start += step
 
     # Process in batches
-    avg_recon_loss = 0.0
+    avg_recon_mse = 0.0
     all_codes = []
     num_blocks = len(blocks)
     with torch.no_grad():
@@ -593,8 +624,10 @@ def return_zq_list(
             x_batch = torch.stack(batch_blocks, dim=0).to(device)  # (B, T, C)
             x_recon, _, _, _, encoding_indices = model(x_batch)
             recon_loss = F.mse_loss(x_recon, x_batch) * C
-            avg_recon_loss += recon_loss.item() * (len(batch_blocks) / num_blocks)
+            avg_recon_mse += recon_loss.item() * (len(batch_blocks) / num_blocks)
             all_codes.extend(encoding_indices.cpu().view(-1).tolist())
+
+    avg_recon_rmse = float(math.sqrt(max(avg_recon_mse, 0.0)))
 
     # Reindex codes to consecutive integers
     mapping = {}
@@ -606,4 +639,4 @@ def return_zq_list(
             next_idx += 1
         reindexed_list.append(mapping[code])
 
-    return reindexed_list, avg_recon_loss
+    return reindexed_list, avg_recon_rmse

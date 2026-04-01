@@ -1,0 +1,12 @@
+{
+  "description": "Reference hyperparameters (mirror CLI defaults in run_sf_experiment.py).",
+  "dataset": "sf",
+  "sample_intervals_min": [5, 15, 30],
+  "interpolation_methods": ["linear", "nearest"],
+  "tolerance_km": [2.5, 5.0, 7.5, 10.0],
+  "codebook_sizes": [256, 512, 1024],
+  "time_steps": 32,
+  "window_stride": 4,
+  "coordinate_scale_km": 10.0,
+  "device": "cuda"
+}

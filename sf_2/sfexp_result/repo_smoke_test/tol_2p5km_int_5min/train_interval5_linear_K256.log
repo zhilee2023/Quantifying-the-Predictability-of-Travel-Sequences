@@ -1,0 +1,2 @@
+Epoch 1: Recon_RMSE_km=4.068004 target_RMSE_km=2.500000, VQ=7.462796, Pred=5.638904, Ent=5.540332
+Epoch 2: Recon_RMSE_km=4.024824 target_RMSE_km=2.500000, VQ=85.147498, Pred=1.621878, Ent=3.956302

@@ -1,0 +1,30 @@
+{
+  "aggregation_uses_eligible_only": true,
+  "eligible_min_length_points": 16,
+  "by_row": [
+    {
+      "interpolation_method": "nearest",
+      "num_segments_all": 68436,
+      "num_segments_eligible_for_vq": 2530,
+      "eligible_min_length_points": 16
+    },
+    {
+      "interpolation_method": "nearest",
+      "codebook_size": 256,
+      "num_vq_segment_rows": 68436,
+      "num_vq_segments_with_predictability": 2530
+    },
+    {
+      "interpolation_method": "nearest",
+      "codebook_size": 512,
+      "num_vq_segment_rows": 68436,
+      "num_vq_segments_with_predictability": 2530
+    },
+    {
+      "interpolation_method": "nearest",
+      "codebook_size": 1024,
+      "num_vq_segment_rows": 68436,
+      "num_vq_segments_with_predictability": 2530
+    }
+  ]
+}

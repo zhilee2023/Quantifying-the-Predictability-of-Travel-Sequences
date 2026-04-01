@@ -1,0 +1,6 @@
+user_id,sample_interval_min,interpolation_method,mode,num_points
+abboip,15,linear,taxi,2014
+abcoij,15,linear,taxi,1147
+abdrem,15,linear,taxi,2006
+abgibo,15,linear,taxi,2015
+abjool,15,linear,taxi,2015
