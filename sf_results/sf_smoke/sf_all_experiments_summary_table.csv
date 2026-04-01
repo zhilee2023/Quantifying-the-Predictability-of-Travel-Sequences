@@ -1,9 +1,0 @@
-scenario_subdir,sample_interval_min,interpolation_method,tolerance_km,method,codebook_size,num_points,predictability,entropy_rate_bits,reconstruction_rmse_km,actual_distortion_km,num_users,scenario_label
-tol_2p5km_int_15min,15,linear,2.5,direct_ctw,,9197.0,0.8665012278995073,1.3452374416237327,1.021741885438396,0.9639531408327144,5,"15 min
-2.5 km"
-tol_2p5km_int_15min,15,linear,2.5,markov_order_1,,9197.0,0.7363577376601046,2.366081304443464,1.021741885438396,0.9639531408327144,5,"15 min
-2.5 km"
-tol_2p5km_int_15min,15,linear,2.5,markov_order_2,,9197.0,0.6845228106721453,2.722166857874176,1.021741885438396,0.9639531408327144,5,"15 min
-2.5 km"
-tol_2p5km_int_15min,15,linear,2.5,vq_ctw,256.0,9197.0,0.862577162506964,1.0610188679646626,2.7599385710704962,2.7599385710704962,5,"15 min
-2.5 km"

@@ -3,6 +3,5 @@ __pycache__/
 .venv/
 # Cabspotting CSV is large; obtain locally (see sf_2/data/README.md)
 sf_2/data/sf_dataset.csv
-geolife_full_run.log
 # Exceeds GitHub LFS 2 GB/file limit; keep locally or host separately (Zenodo / release zip)
 **/latent_code_occurrences.csv

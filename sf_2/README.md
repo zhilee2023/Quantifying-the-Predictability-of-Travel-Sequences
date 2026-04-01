@@ -58,7 +58,7 @@ Full sweeps match your HPC settings via `--tolerance-kms`, `--sample-intervals`,
 
 ## Results folder (`sfexp_result`)
 
-- On this machine, `sfexp_result/` is populated with the **full `sf_results_hpc_2` HPC output** (all tasks and checkpoints). Total size is several GB; **Git is configured to ignore `*.pt` / `*.pkl`** here so you can push code without uploading huge binaries—use Git LFS, a zip release, or a data repository for full weights. See `sfexp_result/README.md`.
+- On this machine, `sfexp_result/` can hold the **full HPC output** (all tasks and checkpoints). Total size is several GB; the repo uses **Git LFS** for `*.pt` / `*.pkl` (see root `.gitattributes`). See `sfexp_result/README.md`.
 - Plotting expects paths like `sfexp_result/sf_run_1980198_task_0/tol_2p5km_int_5min/` with `user_level_results.csv` and `vqvae_*_meta.json` / `.pt` as needed.
 
 ## Figures
@@ -75,4 +75,4 @@ Outputs are written next to `sf_2/` as `fig_bay_area_k_predictability_bar.*` and
 
 ## Citation
 
-If you use the predictability / VQ-VAE methodology, cite your trajectory-predictability paper; the EV generative model citation remains as in the root `README.md` of this repo.
+If you use the predictability / VQ-VAE methodology, cite the paper; see the repository root `README.md` for BibTeX.
