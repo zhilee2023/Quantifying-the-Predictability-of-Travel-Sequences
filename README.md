@@ -7,6 +7,7 @@ This repository has **two separate code packages** — install and run them **in
 |--------|--------|------------|
 | **Experiment 1 (synthetic)** | [`gaussian/`](gaussian/) | 2D Gaussian–Markov sequences + VQ-VAE rate–distortion sweep. |
 | **Real GPS (San Francisco)** | [`sf_cabspotting/`](sf_cabspotting/) | Cabspotting-style SF taxi trajectories: resampling, baselines, VQ-VAE, CTW predictability. |
+| **Entropy block-length test** | [`entropy_block_length/`](entropy_block_length/) | Binary entropy estimators (CTW, ACTW, LZ) with block/window-length sensitivity sweep. |
 
 ---
 
